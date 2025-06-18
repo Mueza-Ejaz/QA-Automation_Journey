@@ -1,0 +1,21 @@
+import java.io.FileWriter
+import java.io.PrintWriter
+import java.io.File
+
+def outputFile = new File("C:/Users/Yousuf Traders/Desktop/response_output.csv")
+def writeHeader = !outputFile.exists()
+
+def fw = new FileWriter(outputFile, true)
+def pw = new PrintWriter(fw)
+
+def requestBody = sampler.getArguments().toString().replaceAll('[\\n\\r]', ' ')
+def responseCode = prev.getResponseCode()
+def responseData = prev.getResponseDataAsString().replaceAll('[\\n\\r]', ' ').replaceAll(',', ' ')
+
+if (writeHeader) {
+    pw.println("Request,Response Code,Response Data")
+}
+
+pw.println("\"${requestBody}\",${responseCode},\"${responseData}\"")
+
+pw.close()
