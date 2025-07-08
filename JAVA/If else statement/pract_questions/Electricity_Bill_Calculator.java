@@ -16,31 +16,36 @@ public class Electricity_Bill_Calculator {
 
             //User enter consumed electricity units
             System.out.print("Please enter the total electricity units you have consumed:");
+
             int consumedUnits = sc.nextInt();
+            int bill = 0;
 
             //if else statement
             if(consumedUnits <= 100){
-                System.out.println("Your total electricity bill of" + " " + consumedUnits + " " + "units = " + consumedUnits * 5);
+                bill = consumedUnits * 5;
 
             }else if(consumedUnits <= 200){
-                System.out.println("Your total electricity bill of" + " " + consumedUnits + " " + "units = " + consumedUnits * 7);
+                bill = (100 * 5) + (consumedUnits - 100) * 7;
 
             } else {
-                System.out.println("Your total electricity bill of" + " " + consumedUnits + " " + "units = " + consumedUnits * 10);
+                bill = (100 * 5) + (100 * 7) + (consumedUnits - 200) * 10;
 
             }
 
-
-        //output: 1
-//        Please enter the total electricity units you have consumed:9
-//        Your total electricity bill of 9 units = 45
-
-
-        //output: 2
-//        Please enter the total electricity units you have consumed:400
-//        Your total electricity bill of 400 units = 4000
-
+        // Final Output
+        System.out.println("Your total electricity bill for " + consumedUnits + " units is: Rs. " + bill);
 
 
         }
     }
+
+
+//output: 1
+//        Please enter the total electricity units you have consumed:9
+//        Your total electricity bill for 9 units is: Rs. 45
+
+
+//output: 2
+//        Please enter the total electricity units you have consumed:400
+//        Your total electricity bill for 400 units is: Rs. 3200
+
