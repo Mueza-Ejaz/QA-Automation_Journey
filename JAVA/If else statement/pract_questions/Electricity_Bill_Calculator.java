@@ -20,7 +20,17 @@ public class Electricity_Bill_Calculator {
             int consumedUnits = sc.nextInt();
             int bill = 0;
 
-            //if else statement
+            //if else statement:
+        
+            //User enters 250 units
+            //   Logic:
+
+            // First 100 units → 100 × 5 = 500
+            // Next 100 units → 100 × 7 = 700
+            // Remaining 50 units → 50 × 10 = 500
+            // Total = 500 + 700 + 500 = Rs. 1700
+
+        
             if(consumedUnits <= 100){
                 bill = consumedUnits * 5;
 
