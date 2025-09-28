@@ -1,0 +1,222 @@
+🔹 ab default (package-private) access ka matlab
+
+agar aap method/variable ke saath kuch bhi na likho, to wo sirf apne folder (package) ke andar wali classes use kar sakti hain.
+dusre folder (dusre package) wali classes us method ko nahi dekh sakti.
+
+
+this keyword: current object ko refer karta hai.Matlab, jis object ke zariye method call kiya jaa raha hai, this usi ko point karega.
+
+Heap kya hota hai?
+
+Jab tum Java program run karti ho, to JVM (Java Virtual Machine) do important memory areas banata hai:
+
+Stack memory
+Heap memory
+
+Heap memory:
+
+Ye ek bada memory area hota hai jahan objects store hote hain.
+
+Jab tum likhti ho:
+Data info = new Data("Albert");
+
+To:
+
+new Data("Albert") → ek object banata hai Heap me.
+info → ek reference variable hota hai jo Stack me banta hai aur Heap wale object ko point karta hai.
+
+Constructors:
+Constructor Kya Hota Hai?
+
+Constructor ek special method hai jo kisi class ka object banate waqt automatically call hota hai.
+Iska kaam object ke fields (properties/variables) ko initialize karna hota hai.
+Constructor ka naam class ke naam ke barabar hota hai aur iska koi return type (void, int, etc.) nahi hota.
+
+🔹 Important Points:
+- Constructor sirf ek dafa object banate waqt call hota hai.
+- Tum ek class me multiple constructors bana sakte ho (yeh constructor overloading kehlata hai).
+
+👉 To simple lafzon me:
+Constructor ka role hota hai naye object ko initialize karna (starting values dena) jab object create hota hai.
+
+1- non-parameterrized, parameterized and copy constructors.
+
+
+Copy Constructor ka main kaam hota hai:
+
+🔹 Ek naye object ko banate waqt usko kisi pehle se existing object ka same data copy karke dena.
+Yani agar aapke paas ek object already hai jisme kuch values hain, aur aap chahte ho ke dusra object bhi wahi values le le bina manually
+ dobara set kiye, to aap copy constructor use karte ho.
+
+- java me destructors ki jaga garbage collector hota hy. 
+
+
+Polymorphism ka Matlab:
+
+Word Polymorphism Greek se aaya hai:
+
+Poly → "many" (bohot)
+Morph → "forms" (shapes/forms)
+
+👉 Matlab: Ek cheez ke bohot saaray forms.
+Java me iska matlab hai ke ek method, function, ya object different tareeqon se behave kar sakta hai depending on situation.
+Polymorphism ka matlab ek hi cheez ka multiple forms me kaam karna.
+
+Types of Polymorphism in Java
+
+1- Compile-time Polymorphism (Static Polymorphism):
+
+→ Ye Method Overloading ke zariye achieve hota hai.
+Same method name hota hai
+Parameters different hotay hain (number/type/order)
+Decide compile time pe hota hai k konsa method chalega.
+
+2- Runtime Polymorphism (Dynamic Polymorphism):
+
+→ Ye Method Overriding ke zariye achieve hota hai.
+Parent class ka method child class me dubara define karna
+Decide runtime pe hota hai k konsa method chalega.
+
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a1 = new Dog();  // upcasting
+        Animal a2 = new Cat();
+
+        a1.sound();  // Output: Dog barks
+        a2.sound();  // Output: Cat meows
+    }
+}
+
+Runtime Decision:
+
+Jab hum parent class ka reference use karte hain lekin object child class ka banate hain, to runtime pe decide hota hai ki kaunsa method chalega.
+Isko hi Runtime Polymorphism kehte hain.
+
+🔹 Access Modifiers kya hote hain?
+
+Access Modifiers Java me keywords hote hain jo decide karte hain ke ek class, method ya variable ko kahan kahan se access (use) kiya jaa sakta hai.
+Dusre lafzon me, ye visibility control karte hain.
+
+
+🔹 protected kya hota hai?
+
+protected ek access modifier hai jo mainly inheritance (extends) ke time use hota hai.
+Agar ek variable/method protected hai to:
+Same package me sabhi classes usko access kar sakti hain.
+Dusre package me directly access nahi hota ❌, lekin agar koi class usko inherit (extends) kare to access ho jata hai ✅.
+
+
+👉 One line me:
+Encapsulation = Data + Methods ko ek saath rakhna + data ko hide karke sirf getter & setter ke zariye access dena.
+
+
+Abstraction kya hota hai?
+Abstraction ka matlab hai fuzool details hide karna aur sirf important cheez user ko dikhana.Yani user ko sirf zaroori part dikhana 
+aur extra details chhupana hi abstraction hai.
+
+🔹 Abstraction achieve karne ke 2 tareeqe hain:
+1. Abstract Class:
+Ye ek aisi class hoti hai jisme abstract methods (sirf declaration, koi body nahi) aur normal methods dono hosakte hain.
+Abstract method = ek aisa function jiska sirf naam hota hai, andar ka code nahi hota.
+Child classes is function ka detail/implementation deti hain.
+
+
+Matlab jab subclass ka object banta hai (Car), to abstract class ka constructor pehle call hota hai aur uske baad subclass ka constructor.
+
+🔹 Final Method ka Rule:
+
+final method ka matlab hai ke subclass us method ko override nahi kar sakti.
+Lekin use kar sakti hai (inherit karke call karna allowed hai).
+Matlab tum us method ka code change nahi kar sakti, par run kar sakti ho.
+
+
+Data Binding kya hota hai?
+
+Data Binding ka matlab hota hai application ke data (business logic) ko directly UI (User Interface) se connect kar dena.
+Iska fayda yeh hai ke agar data change hota hai to UI apne aap update ho jata hai.
+
+
+🔹 static keyword kya hota hai?
+Java me static ek keyword hai jo kisi variable, method, block ya nested class ko class level ka bana deta hai.
+
+👉 Matlab:
+
+Normally jo variable/method tum banati ho wo object ke sath belong karta hai.
+Lekin agar tum static use karti ho to wo class ke sath belong karega, object ke bina use ho sakta hai.
+
+
+1. Static Variable (Class Variable)
+
+Normal variable har object ke liye alag banta hai.
+Lekin static variable sab objects ke liye common hota hai.
+
+2. Static Method (Class Method)
+
+Normal method ko use karne ke liye object banana parta hai.
+Lekin static method ko class ke naam se directly call kar sakte ho.
+
+3. Static Nested Class
+
+Ek class ke andar dusri class ho sakti hai.
+Agar wo static hai to usko object banaye bina use kar sakte ho.
+
+🔹 Static Block kya hota hai?
+
+Jab tumhari class load hoti hai (program start hote hi, bina object banaye) tab ek special block automatically run hota hai jise static block kehte hain.
+Ye mainly initialization (setup work) ke liye use hota hai.
+
+
+🔹 @Override annotation
+Ye Java ka annotation hai (compiler ko hint dene ka tarika).
+
+Validation ka matlab hai data ko check karna ke wo rule ke mutabiq sahi hai ya galat.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
